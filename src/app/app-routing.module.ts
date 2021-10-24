@@ -11,6 +11,7 @@ import { ListComponent } from './components/products/list/list.component';
 import { CreateComponent } from './components/products/create/create.component';
 import { UpdateComponent } from './components/products/update/update.component';
 import { ViewComponent } from './components/products/view/view.component';
+import { ProductsModule } from './components/products/products.module';
 
 //create routes
 const routes: Routes = [
@@ -20,19 +21,12 @@ const routes: Routes = [
   { path: 'users', component: UsersComponent },
   { path: 'signin', component: LoginComponent },
   { path: 'signup', component: RegisterComponent },
-  { path: 'products', children:[
-    { path:'', component: ProductsComponent},
-    { path:'list', component: ListComponent},
-    { path:'create', component: CreateComponent},
-    { path:'update', component: UpdateComponent},
-    { path:'view', component: ViewComponent}   
-
-  ]},
+  { path: 'products', loadChildren: ()=> import('./components/products/products.module').then( m=> m.ProductsModule)},
   { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),ProductsModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
