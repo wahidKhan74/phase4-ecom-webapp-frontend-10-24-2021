@@ -1,1 +1,48 @@
-<p>products works!</p>
+<div class="container mt-4">
+    <div class="btn-group float-right" role="group" aria-label="Basic example">
+        <button type="button" class="badge badge-primary" routerLink="/products/create">Create</button>
+        <button type="button" class="badge badge-info" (click)="filter('all')">All</button>
+        <button type="button" class="badge badge-success" (click)="filter('active')">Active</button>
+        <button type="button" class="badge badge-danger" (click)="filter('inactive')">Inactive</button>
+    </div>
+    <div class="row">
+
+        <div class="col"></div>
+        <div class="col-12">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col"># Id</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Brand</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of products">
+                        <th scope="row">{{p.id}}
+                            <img src="{{p.imageUrl}}" height="20px" width="20px" alt="" srcset="">
+                        </th>
+                        <td>{{p.name}}</td>
+                        <td>{{p.price}}</td>
+                        <td>{{p.desc}}</td>
+                        <td>
+                            <a href="#"
+                                [class]="p.active ? 'badge badge-success' : 'badge badge-danger'">{{p.active?'Active':'Inactive'}}</a>
+                        </td>
+                        <td>{{p.brand}}</td>
+                        <td>
+                            <a href="#" class="badge badge-warning">Update</a>
+                            <a href="#" class="badge badge-danger" (click)="onDelete(p.id)">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col"></div>
+
+    </div>
+</div>

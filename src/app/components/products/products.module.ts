@@ -6,6 +6,7 @@ import { ListComponent } from './list/list.component';
 import { UpdateComponent } from './update/update.component';
 import { ViewComponent } from './view/view.component';
 import { Routes, RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
     { path:'', component: ProductsComponent},
@@ -23,7 +24,7 @@ const routes: Routes = [
     UpdateComponent,
     ViewComponent
   ],
-  imports: [CommonModule,RouterModule.forChild(routes)],
+  imports: [CommonModule,RouterModule.forChild(routes),ReactiveFormsModule],
   exports: [RouterModule]
  
 })
