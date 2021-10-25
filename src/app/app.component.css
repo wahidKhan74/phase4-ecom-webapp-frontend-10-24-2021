@@ -1,5 +1,5 @@
-.cotainer {
-    margin: 30px;
-    padding: 20px;
-    border: 2px solid green;
+.error {
+    color:red;
+    font-weight: bold;
+    font-style: italic;
 }
